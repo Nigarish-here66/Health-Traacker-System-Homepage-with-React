@@ -77,7 +77,7 @@ function App() {
     lineHeight: '1.6',
   };
   const carouselStyle = {
-    height: '920px', 
+    height: '1025px', 
     position: 'relative',
     overflow: 'hidden',
   };
@@ -139,47 +139,50 @@ function App() {
     fontFamily: 'Arial, sans-serif',
   };
 
-  const containerStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  };
-
   const linkGroupStyle = {
     display: 'flex',
-    justifyContent: 'space-around',
-    width: '100%',
-    flexWrap: 'wrap',
-    marginBottom: '20px',
+    justifyContent: 'flex-start', 
+    marginLeft: '120px',
+    gap: '30px', 
+    width: '50%',
   };
-
+  
   const linkColumnStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'flex-start', 
   };
-
+  
   const linkStyle = {
     color: 'white',
     textDecoration: 'none',
     marginBottom: '5px',
   };
-
+  
+  const textStyle = {
+    width: '50%', 
+    marginRight: '120px',
+    color: 'white',
+    fontSize: '16px',
+    lineHeight: '1.5',
+    textAlign: 'justify',
+  };
+  
+  const containerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between', 
+    alignItems: 'flex-start',
+    gap: '20px', 
+    margin: '20px',
+  };
+  
   const hrStyle = {
     border: '0',
     borderTop: '1px solid white',
     width: '100%',
     margin: '20px 0',
   };
-
-  const textStyle = {
-    fontSize: '14px',
-    maxWidth: '600px',
-    margin: '0 auto',
-    marginBottom: '10px',
-  };
+  
 
   const copyrightStyle = {
     fontSize: '14px',
@@ -412,13 +415,14 @@ function App() {
           </div>
         </div>
         <p style={textStyle}>
-          To enjoy good health, to bring true happiness to one's family, to bring peace to all, one must first discipline and control one's own mind. If a man can control his mind he can find the way to Enlightenment.
-        </p>
-        <hr style={hrStyle} />
-        <p style={copyrightStyle}>
-          © 2024 Health Tracker. All Rights Reserved.
+          To enjoy good health, to bring true happiness to one's family, to bring peace to all, one must 
+          <br></br>first discipline and control one's own mind. If a man can control his mind he can find the way <br></br>to Enlightenment.
         </p>
       </div>
+      <hr style={hrStyle} />
+      <p style={copyrightStyle}>
+        © 2024 Health Tracker. All Rights Reserved.
+      </p>
     </footer>
     </div>
   );
