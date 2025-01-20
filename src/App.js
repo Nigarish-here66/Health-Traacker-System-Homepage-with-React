@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useState, useEffect } from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel';
 import firstImage from './images/1.jpg';
 import secondImage from './images/2.jpg';
@@ -8,14 +10,44 @@ import thirdImage from './images/3.jpg';
 import fourthImage from './images/4.jpg';
 import fifthImage from './images/5.jpg';
 import sixthImage from './images/6.jpg';
-import seventhImage from './images/7.jpg';
 import eighthImage from './images/8.jpg';
-
+import ninethImage from './images/10.jpg';
 
 function App() {
+  const [navBarScrolled, setNavBarScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setNavBarScrolled(true);
+      } else {
+        setNavBarScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navBarStyle = {
+    transition: "background-color 0.3s ease-in-out",
+    backgroundColor: navBarScrolled ? "white" : "transparent",
+  };
+
+  const newlinkStyle = {
+    color: navBarScrolled ? "black" : "white",
+    transition: "color 0.3s ease-in-out",
+  };
+
+  const navtextStyle = {
+    color: "blue",
+    fontWeight: "bold",
+  }
   const aboutSectionStyle = {
     position: 'relative',
-    backgroundImage: `url(${seventhImage})`,
+    backgroundImage: `url(${ninethImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '60vh',
@@ -25,7 +57,7 @@ function App() {
   };
 
   const aboutOverlayStyle = {
-    backgroundColor: 'rgba(37, 37, 37, 0.7)', // Dark overlay for text visibility
+    backgroundColor: 'rgba(37, 37, 37, 0.7)', 
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -45,7 +77,7 @@ function App() {
     lineHeight: '1.6',
   };
   const carouselStyle = {
-    height: '920px', // Adjust height as needed
+    height: '920px', 
     position: 'relative',
     overflow: 'hidden',
   };
@@ -53,7 +85,7 @@ function App() {
   const imageStyle = {
     height: '100%',
     objectFit: 'cover',
-    filter: 'brightness(50%)', // Adds a faded effect to images
+    filter: 'brightness(50%)', 
   };
 
   const captionStyle = {
@@ -67,40 +99,40 @@ function App() {
   };
 
   const sectionStyle = {
-    padding: '130px 0', // Vertical padding for the section
-    minHeight: '600px', // Adjust the minimum height of the section as needed
+    padding: '130px 0', 
+    minHeight: '600px', 
   };
 
   const headingStyle = {
-    fontSize: '2.5rem', // Adjust font size of the section heading
+    fontSize: '2.5rem', 
   };
 
   const subHeadingStyle = {
-    fontSize: '1.8rem', // Adjust font size of the subheading
-    color: '#007bff', // Primary color for subheading
+    fontSize: '1.8rem', 
+    color: '#007bff', 
   };
 
   const iconStyle = {
-    fontSize: '3rem', // Adjust font size of the icons
+    fontSize: '3rem', 
   };
 
   const imagesStyle = {
-    height: '250px', // Set image height
-    objectFit: 'cover', // Ensure images cover the space without distortion
+    height: '250px', 
+    objectFit: 'cover', 
   };
 
   const headingItemStyle = {
-    fontSize: '1.5rem', // Font size for the heading in each item
-    marginTop: '20px', // Margin to give space between image and heading
+    fontSize: '1.5rem', 
+    marginTop: '20px', 
   };
 
   const paragraphStyle = {
-    fontSize: '1rem', // Font size for the paragraph text
-    lineHeight: '1.6', // Adjust line height for readability
-    padding: '0 10px', // Padding to avoid text touching the edges
+    fontSize: '1rem', 
+    lineHeight: '1.6', 
+    padding: '0 10px', 
   };
   const footerStyle = {
-    backgroundColor: '#0091ea',
+    backgroundColor: 'rgba(44, 41, 41, 0.99)',
     padding: '20px 0',
     color: 'white',
     textAlign: 'center',
@@ -156,8 +188,10 @@ function App() {
   const newsectionStyle = {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '160px',
+    marginright: '100px',
+    marginleft: '100px',
+    justifyContent: 'center',
+    padding: '140px',
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f9f9f9',
   };
@@ -172,13 +206,6 @@ function App() {
     marginBottom: '15px',
   };
 
-  const newparagraphStyle = {
-    fontSize: '16px',
-    lineHeight: '1.6',
-    marginBottom: '20px',
-    color: '#555',
-  };
-
   const buttonStyle = {
     padding: '10px 20px',
     backgroundColor: '#007bff',
@@ -190,17 +217,65 @@ function App() {
     textDecoration: 'none',
   };
 
+  const newparagraphStyle = {
+    fontSize: '16px',
+    lineHeight: '1.6',
+    marginBottom: '30px', 
+    marginLeft: '20px', 
+    color: '#555',
+  };
+  
   const newimageStyle = {
     maxWidth: '400px',
     height: '400px',
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    marginRight: '100px', 
+    marginTop: '20px', 
   };
+
 
   return (
     <div>
+            {/* Navbar */}
+            <Navbar
+        expand="lg"
+        fixed="top"
+        style={navBarStyle}
+        className={navBarScrolled ? "shadow" : ""}
+      >
+        <Container>
+          <Navbar.Brand href="#" style={newlinkStyle}>
+            <a>HEALTH <span style={navtextStyle}>TRACKER</span></a>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#home" style={newlinkStyle} className="me-4">
+                Home
+              </Nav.Link>
+              <Nav.Link href="#benefits" style={newlinkStyle} className="me-4">
+                Benefits
+              </Nav.Link>
+              <Nav.Link href="#about" style={newlinkStyle} className="me-4">
+                About
+              </Nav.Link>
+              <Nav.Link href="#tracker" style={newlinkStyle} className="me-4">
+                Tracker
+              </Nav.Link>
+              <Nav.Link href="#contact" style={newlinkStyle} className="me-4">
+                Contact Us
+              </Nav.Link>
+              <Nav.Link href="#login" style={newlinkStyle} className="me-4">
+                Login
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
       {/* Header Carousel */}
-      <Carousel>
+      <Carousel id="home">
         <Carousel.Item style={carouselStyle} interval={1000} fade>
           <img src={firstImage} className="d-block w-100" alt="First Slide" style={imageStyle} />
           <div style={captionStyle}>
@@ -229,7 +304,7 @@ function App() {
       </Carousel>
 
       {/* Benefits Section */}
-        <section className="features-section" style={sectionStyle}>
+        <section className="features-section" style={sectionStyle} id="benefits">
         <div className="container">
           <h2 className="text-center my-3" style={headingStyle}>Benefits of Exercise</h2>
           <h3 className="text-center text-primary" style={subHeadingStyle}>
@@ -271,7 +346,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section style={aboutSectionStyle}>
+      <section style={aboutSectionStyle} id="about">
         <div style={aboutOverlayStyle}>
           <div className="container">
             <div className="row">
@@ -296,8 +371,8 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section style={newsectionStyle}>
+      {/* Tracker Section */}
+      <section style={newsectionStyle} id="tracker">
       <img
         src={eighthImage}
         alt="App Screenshot"
@@ -311,13 +386,13 @@ function App() {
           you can learn what helps you take control of how you feel.
         </p>
         <a href="#" style={buttonStyle}>
-          Wave Health for Patients
+          Track your Health
         </a>
       </div>
     </section>
 
       {/* Footers Section */}
-      <footer style={footerStyle}>
+      <footer style={footerStyle} id="contact">
       <div style={containerStyle}>
         <div style={linkGroupStyle}>
           <div style={linkColumnStyle}>
